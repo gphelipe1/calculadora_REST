@@ -5,27 +5,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class OperationService {
 
-	public double realizaOp(double x, String op, double y) {
-		
-        if(op.equalsIgnoreCase("soma")){
+    String result;
     
-            return x + y;
+	public String realizaOp(double x, String op, double y) {
+        try {
+            if(op.equalsIgnoreCase("+")){ //Soma
+        
+                result =  String.valueOf(x + y);
+        
+            } else if(op.equalsIgnoreCase("-")){ //Subtrai
+        
+                result =  String.valueOf(x - y);
     
-        } else if(op.equalsIgnoreCase("subtrai")){
-    
-            return x - y;
-    
-        } else if(op.equalsIgnoreCase("divide")){
-    
-            return x / y;
-            
-        } else if(op.equalsIgnoreCase("potencua")){
-    
-            return Math.pow(x, y) ;
-            
-        }
-        else{
-            return -99999999;
+            } else if(op.equalsIgnoreCase("*")){ //Multiplica
+                
+                result = String.valueOf(x * y);
+        
+            } else if(op.equalsIgnoreCase("/")){ //Divide
+        
+                result = String.valueOf(x / y);
+                
+            } else if(op.equalsIgnoreCase("^")){ //Eleva à potencia Y
+        
+                result = String.valueOf(Math.pow(x, y)) ;
+                
+            }
+
+            return result;
+
+        } catch (Exception e) {
+            return e.getMessage();
         }
 	} 
 

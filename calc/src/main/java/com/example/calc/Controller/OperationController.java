@@ -29,7 +29,7 @@ public class OperationController {
 
         try {
             
-            resultado = service.realizaOp(equacao.getX(), equacao.getOp(), equacao.getY());
+            resultado = Double.parseDouble(service.realizaOp(equacao.getX(), equacao.getOp(), equacao.getY()));
             return new ResponseEntity(resultado, HttpStatus.OK);
 
         } catch (Exception e) {
