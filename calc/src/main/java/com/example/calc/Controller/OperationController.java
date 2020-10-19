@@ -22,14 +22,14 @@ public class OperationController {
 
     double resultado;
 
-    @PostMapping("/op")
-    public ResponseEntity processOperation(@RequestBody EquationDTO eq) {
+    @PostMapping("/soma")
+    public ResponseEntity soma(@RequestBody EquationDTO eq) {
         
-        EquationDTO equacao = EquationDTO.builder().x(eq.getX()).op(eq.getOp()).y(eq.getY()).build();
+        EquationDTO equacao = EquationDTO.builder().x(eq.getX()).y(eq.getY()).build();
 
         try {
             
-            resultado = Double.parseDouble(service.realizaOp(equacao.getX(), equacao.getOp(), equacao.getY()));
+            resultado = Double.parseDouble(service.soma(equacao.getX(), equacao.getY()));
             return new ResponseEntity(resultado, HttpStatus.OK);
 
         } catch (Exception e) {
@@ -38,7 +38,100 @@ public class OperationController {
 
         }
 
+    }
+
+    @PostMapping("/subtrai")
+    public ResponseEntity subtrai(@RequestBody EquationDTO eq) {
+        
+        EquationDTO equacao = EquationDTO.builder().x(eq.getX()).y(eq.getY()).build();
+
+        try {
+            
+            resultado = Double.parseDouble(service.subtrai(equacao.getX(), equacao.getY()));
+            return new ResponseEntity(resultado, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
+
+    }
+
+    @PostMapping("/multiplica")
+    public ResponseEntity multiplica(@RequestBody EquationDTO eq) {
+        
+        EquationDTO equacao = EquationDTO.builder().x(eq.getX()).y(eq.getY()).build();
+
+        try {
+            
+            resultado = Double.parseDouble(service.multiplica(equacao.getX(), equacao.getY()));
+            return new ResponseEntity(resultado, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
+
+    }
+
+    @PostMapping("/divide")
+    public ResponseEntity divide(@RequestBody EquationDTO eq) {
+        
+        EquationDTO equacao = EquationDTO.builder().x(eq.getX()).y(eq.getY()).build();
+
+        try {
+            
+            resultado = Double.parseDouble(service.divide(equacao.getX(), equacao.getY()));
+            return new ResponseEntity(resultado, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
+
+    }
+
+    @PostMapping("/potencia")
+    public ResponseEntity processOperation(@RequestBody EquationDTO eq) {
+        
+        EquationDTO equacao = EquationDTO.builder().x(eq.getX()).y(eq.getY()).build();
+
+        try {
+            
+            resultado = Double.parseDouble(service.potencia(equacao.getX(), equacao.getY()));
+            return new ResponseEntity(resultado, HttpStatus.OK);
+
+        } catch (Exception e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
 
     }
     
 }
+
+/**         if(op.equalsIgnoreCase("+")){ //Soma
+        
+                result =  String.valueOf(x + y);
+        
+            } else if(op.equalsIgnoreCase("-")){ //Subtrai
+        
+                result =  String.valueOf(x - y);
+    
+            } else if(op.equalsIgnoreCase("*")){ //Multiplica
+                
+                result = String.valueOf(x * y);
+        
+            } else if(op.equalsIgnoreCase("/")){ //Divide
+        
+                result = String.valueOf(x / y);
+                
+            } else if(op.equalsIgnoreCase("^")){ //Eleva à potencia Y
+        
+                result = String.valueOf(Math.pow(x, y)) ;
+                
+            } */

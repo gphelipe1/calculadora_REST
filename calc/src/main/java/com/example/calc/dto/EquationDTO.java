@@ -9,6 +9,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class EquationDTO {
     double x;
-    String op;
     double y;
 }
