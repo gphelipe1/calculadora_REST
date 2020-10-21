@@ -19,7 +19,7 @@ public class OperationService {
     public String subtrai(double x, double y) {
         try {
             
-            return String.valueOf(x + y);
+            return String.valueOf(x - y);
             
         } catch (Exception e) {
             
@@ -29,7 +29,7 @@ public class OperationService {
     public String multiplica(double x, double y) {
         try {
             
-            return String.valueOf(x + y);
+            return String.valueOf(x * y);
             
         } catch (Exception e) {
             
@@ -39,7 +39,7 @@ public class OperationService {
     public String divide(double x, double y) {
         try {
             
-            return String.valueOf(x + y);
+            return String.valueOf(x / y);
             
         } catch (Exception e) {
             
